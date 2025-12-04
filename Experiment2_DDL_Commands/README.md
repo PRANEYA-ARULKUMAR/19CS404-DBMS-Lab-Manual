@@ -105,123 +105,177 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+--  Create a table named Employees with the following columns:
 
-```sql
--- Paste your SQL code below for Question 1
+EmployeeID as INTEGER FirstName as TEXT LastName as TEXT HireDate as DATE
+
+```
+create table Employees(
+EmployeeID INTEGER,
+FirstName TEXT,
+LastName TEXT,
+HireDate DATE
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1233" height="407" alt="image" src="https://github.com/user-attachments/assets/90f622f4-9c23-44fb-96e8-1a741c7e34fc" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+-- Create a table named Orders with the following constraints: OrderID as INTEGER should be the primary key. OrderDate as DATE should be not NULL. CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
-```sql
--- Paste your SQL code below for Question 2
+```
+create table Orders(
+OrderID INTEGER PRIMARY KEY,
+OrderDate DATE NOT NULL,
+CustomerID INTEGER,
+foreign key (CustomerID) references Customers(CustomerID)
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1228" height="372" alt="image" src="https://github.com/user-attachments/assets/ca0313b5-93ea-44d9-a431-841e9958c8fd" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- Insert all books from Out_of_print_books into Books
 
-```sql
--- Paste your SQL code below for Question 3
+Table attributes are ISBN, Title, Author, Publisher, YearPublished
+
+```
+insert into Books(ISBN, Title, Author, Publisher, YearPublished) select 
+ISBN, Title, Author, Publisher, YearPublished from out_of_print_books;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1229" height="374" alt="image" src="https://github.com/user-attachments/assets/18c9d19c-4186-47de-8dc8-18e532eba8f6" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+-- Write an SQL query to add a new column email of type TEXT to the Student_details table, and ensure that this column cannot contain NULL values and make default value as 'Invalid'
 
-```sql
--- Paste your SQL code below for Question 4
+```
+alter table Student_details add column email TEXT NOT NULL DEFAULT 'Invalid';
 ```
 
 **Output:**
+<img width="1248" height="334" alt="image" src="https://github.com/user-attachments/assets/69e8584a-3d6c-43bc-b128-e3650f6ebdb3" />
 
-![Output4](output.png)
 
 **Question 5**
 ---
--- Paste Question 5 here
+-- Create a table named Locations with the following columns:
 
-```sql
--- Paste your SQL code below for Question 5
+LocationID as INTEGER LocationName as TEXT Address as TEXT
+
+```
+create table Locations(
+LocationID INTEGER,
+LocationName TEXT,
+Address TEXT
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1236" height="465" alt="image" src="https://github.com/user-attachments/assets/7f426140-8d1f-453c-9e75-c0991f6f4cfb" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+--Insert the following customers into the Customers table:
 
-```sql
--- Paste your SQL code below for Question 6
+CustomerID Name Address City ZipCode
+
+```
+insert into Customers(CustomerID,Name, Address, City, ZipCode)
+values
+(302, 'Laura Croft', '456 Elm St', 'Seattle',98101),
+(303,'Bruce Wayne','789 Oak St','Gotham',10001);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1231" height="466" alt="image" src="https://github.com/user-attachments/assets/58ec86d1-e78b-4848-8265-5c3c0cb3c47a" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- Create a table named Department with the following constraints: DepartmentID as INTEGER should be the primary key. DepartmentName as TEXT should be unique and not NULL. Location as TEXT.
 
-```sql
--- Paste your SQL code below for Question 7
+```
+create table Department (
+DepartmentID INTEGER primary key,
+DepartmentName TEXT NOT NULL UNIQUE,
+Location TEXT
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1235" height="367" alt="image" src="https://github.com/user-attachments/assets/1aeea865-558b-4409-a368-d15e2418dbe7" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+-- Insert the below data into the Customers table, allowing the City and ZipCode columns to take their default values.
 
-```sql
--- Paste your SQL code below for Question 8
+CustomerID Name Address
+
+```
+insert into Customers
+(CustomerID,Name,Address)values
+(304,'Peter Parker','Spider St');
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1229" height="398" alt="image" src="https://github.com/user-attachments/assets/e8cfd3af-85bb-4b05-a990-44481a1b7dbf" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+-- Create a new table named item with the following specifications and constraints: item_id as TEXT and as primary key. item_desc as TEXT. rate as INTEGER. icom_id as TEXT with a length of 4. icom_id is a foreign key referencing com_id in the company table. The foreign key should set NULL on updates and deletes. item_desc and rate should not accept NULL.
 
-```sql
--- Paste your SQL code below for Question 9
+```
+create table item(
+item_id TEXT primary key,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id TEXT(4),
+foreign key (icom_id) references company(com_id)
+ON UPDATE SET NULL
+ON DELETE SET NULL
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1227" height="437" alt="image" src="https://github.com/user-attachments/assets/9b485128-7743-47c6-afbc-c34e5eea18af" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+-- Write a SQL Query to add an attribute designation in the employee table with the data type VARCHAR(50).
 
-```sql
--- Paste your SQL code below for Question 10
+```
+--alter table employee add column designation varchar(50);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1229" height="376" alt="image" src="https://github.com/user-attachments/assets/d408fb54-0705-44d4-9353-67bf4a77b6ca" />
+
+**RESULT:**
+---
+
+Thus, the SQL queries to implement different types of constraints and DDL commands have been executed successfully.
 
 
 ## RESULT
