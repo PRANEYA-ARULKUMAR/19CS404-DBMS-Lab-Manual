@@ -272,11 +272,6 @@ ON DELETE SET NULL
 
 <img width="1229" height="376" alt="image" src="https://github.com/user-attachments/assets/d408fb54-0705-44d4-9353-67bf4a77b6ca" />
 
-**RESULT:**
----
-
-Thus, the SQL queries to implement different types of constraints and DDL commands have been executed successfully.
-
 
 ## RESULT
 Thus, the SQL queries to implement different types of constraints and DDL commands have been executed successfully.
