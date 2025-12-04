@@ -50,13 +50,13 @@ salesman table
 
 customer table
 
-name         type
------------  ----------
-customer_id  int
-cust_name    text
-city         text
-grade        int
-salesman_id  int
+| name   |type  |
+| :------ | :----: | 
+| customer_id | int |
+| cust_name |   text |
+| city       |  text |
+| grade       | int |
+| salesman_id  | int |
 
 ```sql
 -- select * from customer where customer_id = (
