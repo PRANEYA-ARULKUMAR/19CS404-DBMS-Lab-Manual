@@ -149,10 +149,10 @@ update Employees set salary = salary * 2 where department_id = 20 and job_id lik
 Sample table: Products
 
 product_id | original_price | discount_percentage
-------------+----------------+---------------------
-101 | 50.00 | 0.10
-102 | 75.00 | 0.15
-103 | 100.00 | 0.20
+----------   ---------------  -------------------
+101            50.00            0.10
+102            75.00            0.15
+103            100.00           0.20
 
 ```
  select product_id , original_price , discount_percentage , original_price*(1-discount_percentage) as discounted_price from Products;
