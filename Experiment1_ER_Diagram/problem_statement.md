@@ -23,25 +23,29 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 
 ### ER Diagram:
 *Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
+
+<img width="1267" height="695" alt="image" src="https://github.com/user-attachments/assets/c57853df-2e9c-4d4f-a14a-ff3d586e425b" />
 
 ### Entities and Attributes
 
 | Entity | Attributes (PK, FK) | Notes |
 |--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| Member |id(pk),name,type    |       |
+|Fitness | Payment , Salary   |       |
+ Gym                         |       |
+|Program |  Name ,seats       |       |
 |        |                    |       |
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| **Relationship**                                | **Cardinality** | **Participation**             | **Notes**                                            |
+| ----------------------------------------------- | --------------- | ----------------------------- | ---------------------------------------------------- |
+| Details (Member – Fitness Gym)                  | M:N             | Partial                       | Includes attribute *date*                            |
+| Enroll (Member – Fitness Program)               | M:N             | Partial                       | A member can enroll in multiple programs             |
+| Course Offering (Fitness Gym – Fitness Program) | 1:M             | Total on Fitness Program side | Each program is offered by one gym                   |
+| Details (Trainer – Fitness Gym)                 | 1:1             | Total                         | Each trainer works in exactly one gym                |
+| Train (Trainer – Fitness Program)               | M:N             | Partial                       | A trainer can train multiple programs and vice versa |
+
 
 ### Assumptions
 - 
@@ -65,25 +69,28 @@ The Central Library wants to manage book lending and cultural events.
 
 ### ER Diagram:
 *Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
+<img width="827" height="395" alt="image" src="https://github.com/user-attachments/assets/14913c4f-1501-409f-acef-33ad868a8a26" />
+
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| **Entity**  | **Attributes (PK, FK)**          | **Notes**                                                   |
+| ----------- | -------------------------------- | ----------------------------------------------------------- |
+| **Member**  | id **(PK)**, name                | Represents library members                                  |
+| **Books**   | title **(PK)**, category, author | Each book has a unique title                                |
+| **Library** | timing, dues                     | Manages library operations and rules                        |
+| **Event**   | speakers                         | Events organized by the library, may include guest speakers |
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| **Relationship**            | **Cardinality** | **Participation**     | **Notes**                                                                             |
+| --------------------------- | --------------- | --------------------- | ------------------------------------------------------------------------------------- |
+| Borrow (Member – Books)     | M:1             | Partial               | A member can borrow multiple books, but each book is borrowed by one member at a time |
+| Stores (Books – Library)    | M:1             | Total on Library side | Each book is stored in one library                                                    |
+| Consists (Library – Rooms)  | 1:M             | Total on Rooms side   | A library consists of multiple rooms                                                  |
+| Booked (Event – Rooms)      | M:N             | Partial               | Events can be held in multiple rooms and a room can host multiple events              |
+| Organises (Library – Event) | 1:M             | Total on Event side   | A library organizes many events                                                       |
+| Enroll (Member – Event)     | M:N             | Partial               | Members can enroll in multiple events                                                 |
 
 ### Assumptions
 - 
@@ -107,25 +114,35 @@ A popular restaurant wants to manage reservations, orders, and billing.
 
 ### ER Diagram:
 *Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+<img width="940" height="325" alt="image" src="https://github.com/user-attachments/assets/2ee88aea-de1f-4ff4-a3ad-70f4c56ac833" />
+
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| **Entity**      | **Attributes (PK, FK)**                                                                   | **Notes**                                                            |
+| --------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **Customer**    | CustomerID **(PK)**, Name, Phone                                                          | Represents customers who make reservations or place orders           |
+| **Reservation** | ReservationID **(PK)**, Date, Time, NumberOfGuests, CustomerID **(FK)**, TableID **(FK)** | Links customers to reserved tables at a specific date and time       |
+| **Table**       | TableID **(PK)**, Capacity                                                                | Each table has a fixed capacity for guests                           |
+| **Order**       | OrderID **(PK)**, OrderTime, ReservationID **(FK)**, WaiterID **(FK)**                    | Represents orders placed during a reservation and served by a waiter |
+| **Dish**        | DishID **(PK)**, Name, Price, CategoryID **(FK)**                                         | Represents menu items categorized by type                            |
+| **Category**    | CategoryID **(PK)**, CategoryName                                                         | Classifies dishes (e.g., Starter, Main, Dessert)                     |
+| **Bill**        | BillID **(PK)**, TotalAmount, ServiceCharge, OrderID **(FK)**                             | Contains payment details linked to a specific order                  |
+| **Waiter**      | WaiterID **(PK)**, Name                                                                   | Represents staff serving the customers                               |
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| **Relationship**                     | **Cardinality** | **Participation**         | **Notes**                                                         |
+| ------------------------------------ | --------------- | ------------------------- | ----------------------------------------------------------------- |
+| **Makes (Customer – Reservation)**   | 1:M             | Total on Reservation side | Each customer can make multiple reservations                      |
+| **AssignedTo (Reservation – Table)** | M:1             | Total on Reservation side | Each reservation is assigned to one table                         |
+| **Has (Reservation – Order)**        | 1:M             | Total on Order side       | Each reservation can have multiple orders                         |
+| **Contains (Order – Dish)**          | M:N             | Partial                   | Each order can include multiple dishes, with attribute *Quantity* |
+| **BelongsTo (Dish – Category)**      | M:1             | Total on Dish side        | Each dish belongs to one category                                 |
+| **Generates (Reservation – Bill)**   | 1:1             | Total                     | Each reservation generates exactly one bill                       |
+| **Serves (Waiter – Reservation)**    | 1:M             | Total on Reservation side | Each waiter serves multiple reservations                          |
+
+
 
 ### Assumptions
 - 
