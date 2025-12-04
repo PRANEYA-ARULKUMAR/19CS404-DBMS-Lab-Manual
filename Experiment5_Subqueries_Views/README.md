@@ -41,12 +41,12 @@ DROP VIEW view_name;
 
 salesman table
 
-name             type
----------------  ---------------
-salesman_id      numeric(5)
-name                 varchar(30)
-city                    varchar(15)
-commission       decimal(5,2)
+| name   |type  |
+| :------ | :----: | 
+|salesman_id|numeric(5)|
+| name   | varchar(30)   |
+| city  | varchar(15) | 
+| commission   | decimal(5,2) |
 
 customer table
 
